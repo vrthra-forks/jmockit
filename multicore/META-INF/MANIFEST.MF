@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Premain-Class: mockit.multicore.Startup
+Can-Redefine-Classes: true
+Implementation-Version: 1.1
+

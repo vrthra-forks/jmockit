@@ -1,0 +1,23 @@
+<project
+   xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <parent><groupId>mockit</groupId><artifactId>samples</artifactId><version>1</version></parent>
+   <artifactId>animatedtransitions</artifactId>
+   <name>Animated Transitions Sample</name>
+
+   <dependencies>
+      <dependency>
+         <groupId>com.googlecode.jmockit</groupId><artifactId>jmockit</artifactId><version>${jmockit.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>junit</groupId><artifactId>junit</artifactId><version>${junit.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>mockit</groupId><artifactId>timingframework</artifactId><version>1</version>
+      </dependency>
+   </dependencies>
+</project>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - CustomerManager.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../coverage.css'/>
+  <script type='text/javascript' src='../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>orderMngmntWebapp\src\orderMngr\domain\customer\CustomerManager.java</caption>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/*
+ * Copyright (c) 2006-2011 Rogério Liesenfeld
+ * This file is subject to the terms of the MIT license (see LICENSE.txt).
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>5</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package orderMngr.domain.customer;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import java.util.*;
+
+import static orderMngr.service.domain.DomainUtil.*;
+import orderMngr.service.domain.*;
+import orderMngr.service.persistence.*;
+import static orderMngr.service.persistence.Persistence.*;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>14</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered' id='l14s0'>public final class CustomerManager</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>15</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>{</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>16</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public Customer findById(String id)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>17</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>18</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l18s0'>      return load(Customer.class, id);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomerById: 45</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>19</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>21</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public void create(Customer data) throws MissingEntityId, MissingRequiredData, DuplicateCustomer</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>22</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>2</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 2/2</span>
+        <span class='covered' onclick="showPath(this,'l23s0 l24s0')">A: 1</span>
+        <span class='covered' onclick="showPath(this,'l23s0 l27s0 l31s0')">B: 1</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>23</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>      <span id='l23s0' title='Executions: 4' class='covered cp' onclick='showHide(this,0)'>if (data.getId() == null) {</span></pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithMissingName: 86</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithMissingId: 79</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>24</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l24s0'>         throw new MissingEntityId();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithMissingId: 79</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>25</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>27</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l27s0'>      validateRequiredData(data.getFirstName(), data.getLastName());</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithMissingName: 86</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>28</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l28s0'>      validateUniqueness("", data.getFirstName(), data.getLastName());</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>30</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l30s0'>      persist(data);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>31</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l31s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>33</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   private void validateUniqueness(String id, String firstName, String lastName)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>34</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      throws DuplicateCustomer</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>35</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>4</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 2/2</span>
+        <span class='covered' onclick="showPath(this,'l36s0 l40s0 l41s0')">A: 2</span>
+        <span class='covered' onclick="showPath(this,'l36s0 l40s0 l43s0')">B: 2</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>36</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l36s0'>      boolean customerWithSameNameExists = Persistence.exists(</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>37</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>         "from Customer c where c.firstName=? and c.lastName=? and c.id &lt;> ?",</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>38</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>         firstName, lastName, id);</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>40</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>      <span id='l40s0' title='Executions: 4' class='covered cp' onclick='showHide(this,0)'>if (customerWithSameNameExists)</span> <span id='l40s1' title='Executions: 2' class='covered cp' onclick='showHide(this,1)'>{</span></pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>41</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l41s0'>         throw new DuplicateCustomer();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>42</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>43</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l43s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>45</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public void changeNameAndAddress(Customer customer, String newFirstName, String newLastName,</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>46</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      String newAddress) throws MissingRequiredData, DuplicateCustomer</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>48</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l48s0'>      validateRequiredData(newFirstName, newLastName);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>49</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l49s0'>      validateUniqueness(customer.getId(), newFirstName, newLastName);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>51</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l51s0'>      customer.firstName = newFirstName;</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>52</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l52s0'>      customer.lastName = newLastName;</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>53</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l53s0'>      customer.deliveryAddress = newAddress;</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>54</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l54s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>56</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public void remove(Customer customer)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>57</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>58</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l58s0'>      delete(customer);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#removeCustomer: 128</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>59</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l59s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#removeCustomer: 128</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>61</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public List&lt;Customer> findByName(String fullOrPartialName)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>62</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>63</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l63s0'>      return find(</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 136, 140, 141, 142, 143</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>64</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>         "select c from Customer c where lower(c.firstName || ' ' || c.lastName) like ?",</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>65</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>         "%" + fullOrPartialName.toLowerCase() + "%");</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>66</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>67</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>

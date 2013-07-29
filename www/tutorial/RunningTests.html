@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright (c) 2006-2012 Rogério Liesenfeld
+  ~ This file is subject to the terms of the MIT license (see LICENSE.txt).
+  -->
+<html>
+<head>
+   <title>The JMockit Tutorial - Running tests</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <link rel="stylesheet" type="text/css" href="../prettify.css"/>
+   <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+   <script type="text/javascript" src="../highlight.pack.js"></script>
+   <script type="text/javascript">hljs.initHighlightingOnLoad()</script>
+</head>
+<body>
+<h2>
+   Running tests with JMockit
+   <div class="navigation">
+      <a href="../tutorial.html"><img align="right" src="go-home.png" title="Contents"></a>
+      <a href="BehaviorBasedTesting.html"><img align="right" src="go-next.png" title="Next chapter"></a>
+      <a href="AnExample.html"><img align="right" src="go-previous.png" title="Previous chapter"></a>
+   </div>
+</h2>
+
+<p>
+   To run tests that use any of the JMockit APIs, use your Java IDE, Ant/Maven script, etc. the way you normally would.
+   The only additional requirement is that the JVM gets a chance to load the "Java agent" which provides instrumentation
+   access to JMockit (it's all inside <code>jmockit.jar</code>).
+   There are a few different ways to satisfy this requirement, depending on whether JDK 1.5 or 1.6+
+   is used to run the tests, and which test framework is used (JUnit or TestNG):
+</p>
+<ol>
+<li>
+   When using an Oracle JDK of version 1.6 or newer, on Windows, Mac OS X, or Linux:
+   <ul>
+      <li>
+         For <strong>JUnit</strong> 4.5+ test suites, make sure that <code>jmockit.jar</code> appears <em>before</em>
+         the JUnit jar in the classpath.
+         <br/>
+         (Note for <strong>Eclipse</strong> users: when specifying the order of jars in the classpath, make sure to use
+         the "Order and Export" tab of the "Java Build Path" window.
+         Also, make sure the Eclipse project uses the JRE from a JDK installation instead of a "plain" JRE, since the
+         latter lack the "<code>attach</code>" native library.)
+      </li>
+      <li>
+         For <strong>TestNG</strong> 6.2+ test suites, simply add <code>jmockit.jar</code> to the classpath.
+      </li>
+   </ul>
+</li>
+<li>
+   In other situations (if running on JDK 1.5 or other JDK implementations, or if using an older version of TestNG),
+   pass <code>-javaagent:<em>&lt;proper path></em>/jmockit.jar</code> as a JVM initialization parameter.
+   This can easily be done in the "Run/Debug Configuration" for both Eclipse and IntelliJ IDEA, or with build tools such
+   as Ant and Maven.
+</li>
+</ol>
+
+<h3 id="ant">Running tests with the JUnit Ant task</h3>
+<p>
+   When using the <code>&lt;junit></code> element in a <code>build.xml</code> script, it's important to use a separate
+   JVM instance. For example, something like the following:
+</p>
+<pre><code>&lt;junit fork="yes" forkmode="once" dir="directoryContainingJars">
+   &lt;!-- If needed (eg, when running on JDK 1.5), uncomment the following JVM argument:
+   &lt;jvmarg value="-javaagent:jmockit.jar"/> -->
+
+   &lt;classpath path="jmockit.jar"/>
+
+   &lt;!-- To generate (if desired) a code coverage HTML report: -->
+   &lt;classpath path="jmockit-coverage.jar"/>
+
+   &lt;!-- Additional classpath entries, including the appropriate junit.jar -->
+
+   &lt;batchtest>
+      &lt;!-- filesets specifying the desired test classes -->
+   &lt;/batchtest>
+&lt;/junit>
+</code></pre>
+<p>
+   For a complete example, see the <strong><code>"sampleTests"</code></strong> target in the <code>build.xml</code> file
+   found inside the full distribution.
+</p>
+
+<h3 id="maven">Using JMockit in a Maven project</h3>
+<p>
+   The JMockit artifacts are located in the central Maven repository.
+   To use them in a test suite, add the following to your <code>pom.xml</code> file:
+</p>
+<pre><code>&lt;properties>
+   &lt;jmockit.version><em>desired version</em>&lt;/jmockit.version>
+&lt;/properties>
+
+&lt;dependencies>
+   &lt;dependency>
+      &lt;groupId>com.googlecode.jmockit&lt;/groupId>&lt;artifactId>jmockit&lt;/artifactId>
+      &lt;version>${jmockit.version}&lt;/version>&lt;scope>test&lt;/scope>
+   &lt;/dependency>
+&lt;/dependencies>
+</code></pre>
+<p>
+   Make sure the specified version is the one you actually want. (The use of a property is optional, of course.)
+   When using JUnit, this dependency should come <em>before</em> the "<code>junit</code>" dependency.
+</p>
+<p>
+   To run tests with JDK 1.5, you will need to configure the JVM with the "<code>-javaagent</code>" initialization
+   parameter.
+   This can be done in the Surefire plug-in configuration as follows:
+</p>
+<pre><code>&lt;plugin>
+   &lt;artifactId>maven-surefire-plugin&lt;/artifactId>
+   &lt;configuration>&lt;argLine>
+-javaagent:"${settings.localRepository}"/com/googlecode/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+   &lt;/argLine>&lt;/configuration>
+&lt;/plugin>
+</code></pre>
+<p>
+   The above JVM parameter is <em>not</em> required when running tests on a JDK 1.6+ environment, provided it contains a
+   supported implementation of the Attach API (ie, an Oracle JDK for Windows, Mac OS X, or Linux).
+   Even if you have to deploy production code in a JDK 1.5 environment, consider using JDK 1.6 in your local development
+   environment; with the proper build/IDE configuration, a JDK 1.6 Java compiler (either "javac" or the Eclipse
+   compiler) can safely be used to compile Java 1.5 code while generating Java 1.5-compliant class files.
+</p>
+<p>
+   For information on using JMockit Coverage with Maven, see the <a href="CodeCoverage.html#maven">relevant section</a>
+   in the JMockit Tutorial.
+</p>
+
+<div class="navigation">
+   <a href="../tutorial.html"><img align="right" src="go-home.png" title="Contents"></a>
+   <a href="BehaviorBasedTesting.html"><img align="right" src="go-next.png" title="Next chapter"></a>
+   <a href="AnExample.html"><img align="right" src="go-previous.png" title="Previous chapter"></a>
+</div>
+<br/>
+</body>
+</html>

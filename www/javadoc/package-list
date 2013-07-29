@@ -1,0 +1,4 @@
+mockit
+mockit.integration.junit4
+mockit.integration.logging
+mockit.integration.testng

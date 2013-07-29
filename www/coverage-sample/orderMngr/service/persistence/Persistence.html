@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - Persistence.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../coverage.css'/>
+  <script type='text/javascript' src='../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>orderMngmntWebapp\src\orderMngr\service\persistence\Persistence.java</caption>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/*
+ * Copyright (c) 2006-2011 Rogério Liesenfeld
+ * This file is subject to the terms of the MIT license (see LICENSE.txt).
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>5</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package orderMngr.service.persistence;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import java.io.*;
+import java.util.*;
+
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>13</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l13s0'>public final class Persistence</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>14</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>{</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>15</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l15s0'>   private static final ThreadLocal&lt;Session> currentSession = new ThreadLocal&lt;Session>();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>16</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   private static final SessionFactory sessionFactory;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>18</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   static {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>19</td><td>&nbsp;</td>
+      <td><pre class='comment'>      //noinspection CatchGenericClass,OverlyBroadCatchBlock</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>20</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>21</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l21s0'>         sessionFactory = new Configuration().configure().buildSessionFactory();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>22</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>23</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l23s0'>      catch (Error e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>24</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l24s0'>         System.err.println(e);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>25</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l25s0'>         throw e;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>26</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>27</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l27s0'>      catch (RuntimeException e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>28</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l28s0'>         System.err.println(e);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>29</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l29s0'>         throw e;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>30</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l30s0'>      }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>31</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l31s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>33</td><td>&nbsp;</td>
+      <td><pre class='comment'>   // Entity life-cycle methods -------------------------------------------------------------------</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>35</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static &lt;T> T load(Class&lt;T> entityClass, Serializable entityId)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>36</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>37</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l37s0'>      return (T) session().load(entityClass, entityId);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 108</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomerById: 45, 47</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 72</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>38</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>40</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static boolean exists(Class&lt;?> entityClass, Serializable entityId)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>41</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>42</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>      <span id='l42s0' title='Executions: 1' class='covered cp' onclick='showHide(this,0)'>return session().get(entityClass, entityId) != null;</span></pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#removeCustomer: 130</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>43</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>45</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static void unload(Object entity)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>46</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l47s0'>      session().evict(entity);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 108</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomerById: 47</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 72</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>48</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l48s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 108</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomerById: 47</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 72</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>50</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static void persist(Object entityData)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>51</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>52</td><td class='count'>8</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l52s0'>      session().save(entityData);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 103</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 92</li>
+          <li>orderMngr.domain.customer.CustomerTest#removeCustomer: 126</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 115, 117</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomerById: 42</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 139</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>53</td><td class='count'>8</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l53s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 103</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 92</li>
+          <li>orderMngr.domain.customer.CustomerTest#removeCustomer: 126</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 115, 117</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomerById: 42</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 139</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>55</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static void delete(Object entity)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>56</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>57</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l57s0'>      session().delete(entity);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#removeCustomer: 128</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>58</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l58s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#removeCustomer: 128</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>60</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   private static Session session()</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>61</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>66</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#00ff00' onclick='hidePath()'>Path coverage: 2/2</span>
+        <span class='covered' onclick="showPath(this,'l62s0 l64s0 l69s0')">A: 57</span>
+        <span class='covered' onclick="showPath(this,'l62s0 l64s0 l65s0 l69s0')">B: 9</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>62</td><td class='count'>66</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l62s0'>      Session session = currentSession.get();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 103, 106, 108x5</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 92, 97</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#removeCustomer: 126, 128, 130x2</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 115, 117, 119</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomerById: 42, 45, 47x2</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 136, 139, 140, 141, 142, 143</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70x2, 72x2</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>64</td><td class='count'>66</td>
+      <td><pre class='prettyprint jmp'>      <span id='l64s0' title='Executions: 66' class='covered cp' onclick='showHide(this,0)'>if (session == null)</span> <span id='l64s1' title='Executions: 9' class='covered cp' onclick='showHide(this,1)'>{</span></pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 103, 106, 108x5</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 92, 97</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#removeCustomer: 126, 128, 130x2</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 115, 117, 119</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomerById: 42, 45, 47x2</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 136, 139, 140, 141, 142, 143</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70x2, 72x2</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+        </ol>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>65</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l65s0'>         session = sessionFactory.openSession();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>66</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l66s0'>         currentSession.set(session);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>67</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>69</td><td class='count'>66</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l69s0'>      return session;</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 103, 106, 108x5</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 92, 97</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#removeCustomer: 126, 128, 130x2</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 115, 117, 119</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomerById: 42, 45, 47x2</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 136, 139, 140, 141, 142, 143</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70x2, 72x2</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2, 26</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>70</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>72</td><td>&nbsp;</td>
+      <td><pre class='comment'>   // Query methods -------------------------------------------------------------------------------</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>74</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static &lt;E> List&lt;E> find(String ql, Object... args)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>75</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>76</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l76s0'>      Query query = newQuery(ql, args);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 136, 140, 141, 142, 143</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>77</td><td class='count'>5</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l77s0'>      return query.list();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 136, 140, 141, 142, 143</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>78</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>80</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   private static Query newQuery(String ql, Object... args)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>81</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>9</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
+        <span class='uncovered' onclick="showPath(this,'l82s0 l84s0 l88s0')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l82s0 l84s0 l85s0 l88s0')">B: 9</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>82</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l82s0'>      Query query = session().createQuery(ql);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 136, 140, 141, 142, 143</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>84</td><td class='count'>26</td>
+      <td><pre class='prettyprint jmp'>      <span id='l84s0' title='Executions: 26' class='covered cp' onclick='showHide(this,0)'>for (int i = 0; i &lt; args.length; i++)</span> <span id='l84s1' title='Executions: 17' class='covered cp' onclick='showHide(this,1)'>{</span></pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106x4</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97x4</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119x4</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 136x2, 140x2, 141x2, 142x2, 143x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106x3</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97x3</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119x3</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 136, 140, 141, 142, 143</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>85</td><td class='count'>17</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l85s0'>         query.setParameter(i, args[i]);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106x3</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97x3</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119x3</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 136, 140, 141, 142, 143</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>86</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>88</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l88s0'>      return query;</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119</li>
+          <li>orderMngr.domain.customer.CustomerTest#findCustomersByName: 136, 140, 141, 142, 143</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>89</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>91</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static boolean exists(String ql, Object... args)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>92</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>93</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l93s0'>      Query query = newQuery(ql, args);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>94</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l94s0'>      query.setMaxResults(1);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>95</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l95s0'>      return query.iterate().hasNext();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>96</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>98</td><td>&nbsp;</td>
+      <td><pre class='comment'>   // Methods related to the Unit of Work and the Transaction -------------------------------------</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>100</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static void persistPendingChanges()</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>101</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>102</td><td class='count'>10</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l102s0'>      session().flush();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 108</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>103</td><td class='count'>10</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l103s0'>      session().beginTransaction();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 108</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>104</td><td class='count'>10</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l104s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 108</li>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 25</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>106</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static void clearUnitOfWork()</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>107</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>108</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l108s0'>      session().clear();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>109</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l109s0'>   }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>111</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static void closeUnitOfWork()</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>112</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>9</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
+        <span class='uncovered' onclick="showPath(this,'l113s0 l115s0 l119s0')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l113s0 l115s0 l116s0 l119s0')">B: 9</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>113</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l113s0'>      Session session = currentSession.get();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 27</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>115</td><td class='count'>9</td>
+      <td><pre class='prettyprint jmp'>      <span id='l115s0' title='Executions: 9' class='covered cp' onclick='showHide(this,0)'>if (session != null)</span> <span id='l115s1' title='Executions: 9' class='covered cp' onclick='showHide(this,1)'>{</span></pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 27</li>
+        </ol>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 27</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>116</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l116s0'>         session.close();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 27</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>117</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l117s0'>         currentSession.set(null);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 27</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>118</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>119</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l119s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 27</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>121</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static void beginTransaction()</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>122</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>123</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l123s0'>      session().beginTransaction();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>124</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l124s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#setUp: 19</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>126</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static void rollbackTransaction()</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>127</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>128</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l128s0'>      session().getTransaction().rollback();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 26</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>129</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l129s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.service.domain.DomainTest#tearDown: 26</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>131</td><td>&nbsp;</td>
+      <td><pre class='comment'>   // Miscelaneous methods ------------------------------------------------------------------------</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>133</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static Serializable entityId(Object entity)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>134</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>135</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l135s0'>      return session().getIdentifier(entity);</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 108</li>
+          <li>orderMngr.domain.customer.CustomerTest#removeCustomer: 130</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>136</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>137</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>

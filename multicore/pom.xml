@@ -1,0 +1,43 @@
+<project
+   xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <groupId>com.googlecode.jmockit</groupId><artifactId>multicore</artifactId><version>1.1</version>
+   <name>JMockit Multi-Core Test Runner</name>
+
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+   </properties>
+
+   <build>
+      <sourceDirectory>src</sourceDirectory>
+      <testSourceDirectory>test</testSourceDirectory>
+      <outputDirectory>classes</outputDirectory>
+      <testOutputDirectory>test-classes</testOutputDirectory>
+      <finalName>${project.artifactId}</finalName>
+      <plugins>
+         <plugin>
+            <artifactId>maven-compiler-plugin</artifactId><version>2.5.1</version>
+            <configuration><source>1.6</source><target>1.6</target></configuration>
+         </plugin>
+         <plugin>
+            <artifactId>maven-surefire-plugin</artifactId><version>2.12.4</version>
+            <configuration>
+               <enableAssertions>true</enableAssertions>
+               <disableXmlReport>true</disableXmlReport>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+
+   <dependencies>
+      <dependency>
+         <groupId>com.googlecode.jmockit</groupId><artifactId>jmockit</artifactId><version>1.2</version>
+      </dependency>
+      <dependency>
+         <groupId>junit</groupId><artifactId>junit</artifactId><version>4.11</version>
+         <optional>true</optional>
+      </dependency>
+   </dependencies>
+</project>

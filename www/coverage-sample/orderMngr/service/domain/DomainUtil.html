@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - DomainUtil.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../coverage.css'/>
+  <script type='text/javascript' src='../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>orderMngmntWebapp\src\orderMngr\service\domain\DomainUtil.java</caption>
+    <tr>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package orderMngr.service.domain;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>3</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l3s0'>public final class DomainUtil</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>4</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>{</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>5</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   public static void validateRequiredData(Object... dataItems) throws MissingRequiredData</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>6</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>   {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>5</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#996600' onclick='hidePath()'>Path coverage: 2/5</span>
+        <span class='uncovered' onclick="showPath(this,'l7s0 l7s1 l8s0 l9s0')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l7s0 l7s1 l8s0 l11s0 l12s0 l14s0 l15s0')">B: 1</span>
+        <span class='uncovered' onclick="showPath(this,'l7s0 l19s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l7s0 l7s1 l8s0 l11s0 l19s0')">D: 0</span>
+        <span class='covered' onclick="showPath(this,'l7s0 l7s1 l8s0 l11s0 l12s0 l14s0 l19s0')">E: 4</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>7</td><td class='count'>13</td>
+      <td><pre class='prettyprint jmp'>      <span id='l7s0' title='Executions: 13' class='covered cp' onclick='showHide(this,0)'>for (Object dataItem</span> : <span id='l7s1' title='Executions: 9' class='covered cp' onclick='showHide(this,1)'>dataItems)</span> </pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithMissingName: 86</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106x3</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97x3</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119x3</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithMissingName: 86</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>8</td><td class='count'>9</td>
+      <td><pre class='prettyprint jmp'>         <span id='l8s0' title='Executions: 9' class='covered cp' onclick='showHide(this,0)'>if (dataItem == null)</span> <span id='l8s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>9</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l9s0'>            throw new MissingRequiredData();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>10</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>         }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>11</td><td class='count'>9</td>
+      <td><pre class='prettyprint jmp'>         else <span id='l11s1' title='Executions: 9' class='covered cp' onclick='showHide(this,1)'>if (dataItem instanceof String)</span> </pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithMissingName: 86</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithMissingName: 86</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>12</td><td class='count'>9</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l12s0'>            String itemText = (String) dataItem;</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithMissingName: 86</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>14</td><td class='count'>9</td>
+      <td><pre class='prettyprint jmp'>            <span id='l14s0' title='Executions: 9' class='covered cp' onclick='showHide(this,0)'>if (itemText.trim().length() == 0) {</span></pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithMissingName: 86</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119x2</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>15</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l15s0'>               throw new MissingRequiredData();</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithMissingName: 86</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>16</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>17</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>         }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>18</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>19</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l19s0'>   }</pre>
+        <ol style='display: none'>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomer: 106</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomerWithDuplicateName: 97</li>
+          <li>orderMngr.domain.customer.CustomerTest#editCustomerWithDuplicateNewName: 119</li>
+          <li>orderMngr.domain.customer.CustomerTest#createCustomer: 70</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>20</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>

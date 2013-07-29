@@ -1,0 +1,86 @@
+<project
+   xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <groupId>mockit</groupId><artifactId>samples</artifactId><version>1</version>
+   <packaging>pom</packaging>
+
+   <modules>
+      <module>tutorial</module>
+      <module>easymock</module>
+      <module>jmock</module>
+      <module>jbossaop</module>
+      <module>mockito</module>
+      <module>unitils</module>
+      <module>powermock</module>
+      <module>TimingFramework</module>
+      <module>AnimatedTransitions</module>
+      <module>orderMngmntWebapp</module>
+      <module>tourdemock</module>
+      <module>LoginService</module>
+      <module>fakingXmocking</module>
+   </modules>
+
+   <name>The JMockit Testing Toolkit Samples</name>
+   <description>Sample test suites for the toolkit</description>
+
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <jmockit.version>1.3</jmockit.version>
+      <junit.version>4.11</junit.version>
+   </properties>
+
+   <profiles>
+      <profile>
+         <id>unit-tests</id>
+         <build>
+            <plugins>
+               <plugin>
+                  <artifactId>maven-surefire-plugin</artifactId><version>2.12.4</version>
+                  <configuration>
+                     <includes><include>**/*Test.java</include></includes>
+                     <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/end2end/**/*Test.java</exclude>
+                     </excludes>
+                  </configuration>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+      <profile>
+         <id>integration-tests</id>
+         <build>
+            <plugins>
+               <plugin>
+                  <artifactId>maven-surefire-plugin</artifactId><version>2.12.4</version>
+                  <configuration>
+                     <includes>
+                        <include>**/*IntegrationTest.java</include>
+                        <include>**/end2end/**/*Test.java</include>
+                     </includes>
+                  </configuration>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+   </profiles>
+
+   <build>
+      <sourceDirectory>src</sourceDirectory>
+      <testSourceDirectory>test</testSourceDirectory>
+      <outputDirectory>classes</outputDirectory>
+      <testOutputDirectory>test-classes</testOutputDirectory>
+      <plugins>
+         <plugin>
+            <artifactId>maven-compiler-plugin</artifactId><version>2.5.1</version>
+            <configuration><source>1.6</source><target>1.6</target></configuration>
+         </plugin>
+         <plugin>
+            <artifactId>maven-surefire-plugin</artifactId><version>2.12.4</version>
+            <configuration><disableXmlReport>true</disableXmlReport></configuration>
+         </plugin>
+      </plugins>
+   </build>
+</project>

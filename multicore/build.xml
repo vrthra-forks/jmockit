@@ -1,0 +1,42 @@
+<!--
+  ~ Copyright (c) 2006-2013 Rogério Liesenfeld
+  ~ This file is subject to the terms of the MIT license (see LICENSE.txt).
+  -->
+<project name="jmockit-multicore" basedir="." default="tests">
+   <target name="createJar">
+      <delete file="jmockit-multicore.jar"/>
+      <jar destfile="jmockit-multicore.jar" manifest="META-INF/MANIFEST.MF">
+         <fileset file="../LICENSE.txt"/>
+         <fileset dir="src" includes="**/*.java"/>
+         <fileset dir="classes"/>
+         <fileset dir="../main/classes">
+            <include name="mockit/Invocation.class"/>
+            <include name="mockit/Mock.class"/>
+            <include name="mockit/MockClass.class"/>
+            <include name="mockit/MockUp.class"/>
+            <include name="mockit/internal/*.class"/>
+            <include name="mockit/internal/annotations/*.class"/>
+            <include name="mockit/internal/filtering/*.class"/>
+            <include name="mockit/internal/state/*.class"/>
+            <include name="mockit/internal/startup/*.class"/>
+            <include name="mockit/internal/util/*.class"/>
+            <include name="mockit/external/asm4/*.class"/>
+         </fileset>
+      </jar>
+   </target>
+
+   <target name="tests">
+      <junit fork="yes" forkmode="once" showoutput="true" printsummary="true">
+         <jvmarg line="-ea"/>
+         <classpath location="classes"/>
+         <classpath location="test-classes"/>
+         <classpath location="../jmockit.jar"/>
+         <classpath location="../lib/junit-dep-4.11.jar"/>
+         <classpath location="../lib/hamcrest-core-1.2.jar"/>
+         <batchtest>
+            <fileset dir="test-classes" includes="**/*Test.class"/>
+         </batchtest>
+         <formatter type="plain"/>
+      </junit>
+   </target>
+</project>

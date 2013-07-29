@@ -1,0 +1,484 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>Mockit (JMockit Toolkit API)</title>
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="Mockit (JMockit Toolkit API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+</ul>
+<div class="aboutLanguage"><em><a href=http://code.google.com/p/jmockit target=_top><img src=resources/logo.png>JMockit Home</a></em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../mockit/Mocked.html" title="annotation in mockit"><span class="strong">Prev Class</span></a></li>
+<li><a href="../mockit/MockUp.html" title="class in mockit"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../index.html?mockit/Mockit.html" target="_top">Frames</a></li>
+<li><a href="Mockit.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">mockit</div>
+<h2 title="Class Mockit" class="title">Class Mockit</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li>mockit.Mockit</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<pre>public final class <span class="strong">Mockit</span>
+extends <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+<div class="block">Provides static methods for the mocking and stubbing of arbitrary classes, according to specified <em>mock
+ classes</em> defined in test code.
+ Such methods are intended to be called from test code only.
+ <p/>
+ Once mocked, a "real" method defined in a production class will behave (during test execution) as if its
+ implementation was replaced by a call to the corresponding <em>mock method</em> in the mock class.
+ Whatever value this mock method returns will be the value returned by the call to the mocked method.
+ The mock method can also throw an exception or error, which will then be propagated to the caller of the mocked
+ "real" method.
+ Therefore, while mocked the original code in the real method is never executed (actually, there's still a way to
+ execute the real implementation, although not normally used for testing purposes).
+ The same basic rules apply to constructors, which can be mocked by mock methods with the special name "$init".
+ <p/>
+ The methods in this class can be divided in the following groups:
+ <ul>
+ <li>
+ <strong>Stubbing API</strong>: <a href="../mockit/Mockit.html#stubOut(java.lang.Class...)"><code>stubOut(Class...)</code></a>, <a href="../mockit/Mockit.html#stubOutClass(java.lang.Class, java.lang.String...)"><code>stubOutClass(Class, String...)</code></a>, and
+ <a href="../mockit/Mockit.html#stubOutClass(java.lang.Class, boolean, java.lang.String...)"><code>stubOutClass(Class, boolean, String...)</code></a>.
+ </li>
+ <li>
+ <strong>Mockups API</strong> for state-oriented mocking: <a href="../mockit/MockUp.html" title="class in mockit"><code>MockUp</code></a>, <a href="../mockit/Mockit.html#setUpMocks(java.lang.Object...)"><code>setUpMocks(Object...)</code></a>, and
+ <a href="../mockit/Mockit.html#setUpMock(java.lang.Class, java.lang.Class)"><code>setUpMock(Class, Class)</code></a> and its several overloads.
+ </li>
+ </ul>
+ In the Tutorial:
+ <a href="http://jmockit.googlecode.com/svn/trunk/www/tutorial/StateBasedTesting.html">Writing state-based tests</a></div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../mockit/Mockit.html#setUpMock(java.lang.Class, java.lang.Class)">setUpMock</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;realClass,
+         <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;mockClass)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Use <a href="../mockit/MockUp.html#MockUp()"><code>MockUp.MockUp()</code></a> or <a href="../mockit/MockUp.html#MockUp(java.lang.Class)"><code>MockUp.MockUp(Class)</code></a> instead.</i></div>
+</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../mockit/Mockit.html#setUpMock(java.lang.Class, java.lang.Object)">setUpMock</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;realClass,
+         <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;mock)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Use <a href="../mockit/MockUp.html#MockUp()"><code>MockUp.MockUp()</code></a> or <a href="../mockit/MockUp.html#MockUp(java.lang.Class)"><code>MockUp.MockUp(Class)</code></a> instead.</i></div>
+</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static &lt;T&gt;&nbsp;T</code></td>
+<td class="colLast"><code><strong><a href="../mockit/Mockit.html#setUpMock(java.lang.Object)">setUpMock</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;mockClassOrInstance)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Use <a href="../mockit/MockUp.html#MockUp()"><code>MockUp.MockUp()</code></a> and <a href="../mockit/MockUp.html#getMockInstance()"><code>MockUp.getMockInstance()</code></a> (when mocking an interface) instead.</i></div>
+</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../mockit/Mockit.html#setUpMocks(java.lang.Object...)">setUpMocks</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;mockClassesOrInstances)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Use <a href="../mockit/MockUp.html" title="class in mockit"><code>MockUp</code></a> instead.</i></div>
+</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../mockit/Mockit.html#stubOut(java.lang.Class...)">stubOut</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;...&nbsp;realClasses)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Use the <a href="../mockit/UsingMocksAndStubs.html" title="annotation in mockit"><code>UsingMocksAndStubs</code></a> annotation instead.</i></div>
+</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../mockit/Mockit.html#stubOutClass(java.lang.Class, boolean, java.lang.String...)">stubOutClass</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;realClass,
+            boolean&nbsp;inverse,
+            <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;filters)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Use <a href="../mockit/MockUp.html" title="class in mockit"><code>MockUp</code></a> instead, with empty <a href="../mockit/Mock.html" title="annotation in mockit"><code>Mock</code></a> methods for the methods and constructors to be
+ stubbed out.</i></div>
+</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../mockit/Mockit.html#stubOutClass(java.lang.Class, java.lang.String...)">stubOutClass</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;realClass,
+            <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;filters)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Use <a href="../mockit/MockUp.html" title="class in mockit"><code>MockUp</code></a> instead, with empty <a href="../mockit/Mock.html" title="annotation in mockit"><code>Mock</code></a> methods for the methods and constructors to be
+ stubbed out.</i></div>
+</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="stubOut(java.lang.Class...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>stubOut</h4>
+<pre><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+public static&nbsp;void&nbsp;stubOut(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;...&nbsp;realClasses)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Use the <a href="../mockit/UsingMocksAndStubs.html" title="annotation in mockit"><code>UsingMocksAndStubs</code></a> annotation instead.</i></div>
+<div class="block">Stubs out all methods, constructors, and static initializers in the given classes, so that they do nothing
+ whenever executed.
+ <p/>
+ Note that any stubbed out constructor will still call a constructor in the super-class, which in turn will be
+ executed normally unless also stubbed out.
+ The super-constructor to be called is chosen arbitrarily.
+ The classes are stubbed out in the order they are given, so make sure any super-class comes first.
+ <p/>
+ Methods with non-<code>void</code> return type will return the default value for this type, that is, zero for a
+ number or <code>char</code>, false for a boolean, empty for an array, or null for a reference
+ type.
+ <p/>
+ If a different behavior is desired for any method or constructor, then <a href="../mockit/Mockit.html#setUpMocks(java.lang.Object...)"><code>setUpMocks(Object...)</code></a> and the
+ other similar methods can be used right after the call to this method.
+ They will override any stub previously created with the corresponding mock implementation, if any.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>realClasses</code> - one or more regular classes to be stubbed out</dd></dl>
+</li>
+</ul>
+<a name="stubOutClass(java.lang.Class, java.lang.String...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>stubOutClass</h4>
+<pre><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+public static&nbsp;void&nbsp;stubOutClass(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;realClass,
+                           <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;filters)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Use <a href="../mockit/MockUp.html" title="class in mockit"><code>MockUp</code></a> instead, with empty <a href="../mockit/Mock.html" title="annotation in mockit"><code>Mock</code></a> methods for the methods and constructors to be
+ stubbed out.</i></div>
+<div class="block">Same as <a href="../mockit/Mockit.html#stubOut(java.lang.Class...)"><code>stubOut(Class...)</code></a> for the given class, except that only the specified class members (if any) are
+ stubbed out, leaving the rest unaffected.
+ Such class members include the methods and constructors defined by the class, plus any static or instance
+ initialization blocks it might have.
+ Note that if <em>no</em> filters are specified the whole class will be stubbed out.
+ <p/>
+ For methods, the filters are <a href="http://download.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html?is-external=true" title="class or interface in java.util.regex">regular expressions</a> for method names, optionally
+ followed by parameter type names between parentheses. For constructors, only the parameters are specified.
+ For more details about the syntax for mock filters, see the <a href="../mockit/MockClass.html#stubs()"><code>MockClass.stubs()</code></a> annotation attribute.
+ <p/>
+ The special filter "&lt;clinit>" will match all static initializers in the given class.
+ <p/>
+ To stub out instance field initializers it is necessary to actually specify all constructors in the class, because
+ such initialization assignments are copied to each and every constructor by the Java compiler.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>realClass</code> - a regular class to be stubbed out</dd><dd><code>filters</code> - one or more filters that specify which class members (methods, constructors, and/or static
+ initialization blocks) to be stubbed out</dd></dl>
+</li>
+</ul>
+<a name="stubOutClass(java.lang.Class, boolean, java.lang.String...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>stubOutClass</h4>
+<pre><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+public static&nbsp;void&nbsp;stubOutClass(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;realClass,
+                           boolean&nbsp;inverse,
+                           <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;filters)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Use <a href="../mockit/MockUp.html" title="class in mockit"><code>MockUp</code></a> instead, with empty <a href="../mockit/Mock.html" title="annotation in mockit"><code>Mock</code></a> methods for the methods and constructors to be
+ stubbed out.</i></div>
+<div class="block">The same as <a href="../mockit/Mockit.html#stubOutClass(java.lang.Class, java.lang.String...)"><code>stubOutClass(Class, String...)</code></a>, but specifying whether filters are to be inverted or not.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>inverse</code> - indicates whether the mock filters are to be inverted or not; if inverted, only the methods and
+ constructors matching them are <strong>not</strong> mocked</dd></dl>
+</li>
+</ul>
+<a name="setUpMocks(java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setUpMocks</h4>
+<pre><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+public static&nbsp;void&nbsp;setUpMocks(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;mockClassesOrInstances)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Use <a href="../mockit/MockUp.html" title="class in mockit"><code>MockUp</code></a> instead.</i></div>
+<div class="block">Sets up the mocks defined in one or more <a href="../mockit/MockClass.html" title="annotation in mockit">mock classes</a>.
+ <p/>
+ After this call, all such mocks are "in effect" until the end of the test method inside which it appears, if this
+ is the case.
+ If the method is a "before"/"setUp" method which executes before all test methods, then the mocks will remain in
+ effect until the end of the test (including any "after"/"tearDown" methods).
+ <p/>
+ Any invocation count constraints specified on mock methods (such as <code>@Mock(invocations = 1)</code>, for example)
+ will be automatically verified after the code under test is executed.
+ <p/>
+ For each call made during test execution to a <em>mocked</em> method, the corresponding <em>mock</em> method is
+ called instead.
+ A mock method must have the same signature (ie, name and parameters) as the corresponding mocked/real method.
+ The return type of the mock method must be the same exact type <em>or</em> a compatible one.
+ The <code>throws</code> clause may differ in any way.
+ Note also that the mock method can be static or not, independently of the real method being static or not.
+ <p/>
+ A constructor in the real class can be mocked by a corresponding mock method of name <code>$init</code>, declared
+ with the same parameters and with <code>void</code> return type.
+ It will be called for each new instance of the real class that is created through a call to that constructor, with
+ whatever arguments are passed to it.
+ <p/>
+ <strong>Class initializers</strong> of the real class (one or more <code>static</code> initialization blocks plus all
+ assignments to <code>static</code> fields) can be mocked by providing a mock method named <code>$clinit</code> in the mock
+ class. This method should return <code>void</code> and have no declared parameters.
+ It will be called at most once, at the time the real class is initialized by the JVM (and since all static
+ initializers for that class are mocked, the initialization will have no effect).
+ <p/>
+ Mock methods can gain access to the instance of the real class on which the corresponding real method or
+ constructor was called. This requires the mock class to define an instance field of name <strong>"it"</strong>,
+ the same type as the real class, and accessible from that class (in general, this means the field will have to be
+ <code>public</code>). Such a field will always be set to the appropriate real class instance, whenever a mock method is
+ called. Note that through this field the mock class will be able to call any accessible instance method on the
+ real class, including the real method corresponding to the current mock method. In this case, however, such calls
+ are not allowed by default because they lead to infinite recursion, with the mock calling itself indirectly
+ through the redefined real method. If the real method needs to be called from the mock method, then the latter
+ must be declared as <a href="../mockit/Mock.html#reentrant()">reentrant</a>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>mockClassesOrInstances</code> - one or more classes (<code>Class</code> objects) or instances of classes which define
+ arbitrary methods and/or constructors, where the ones annotated as <a href="../mockit/Mock.html" title="annotation in mockit">mocks</a> will be used to
+ redefine corresponding real methods/constructors in a designated <a href="../mockit/MockClass.html#realClass()">real class</a>
+ (usually, a class on which the code under test depends on)</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if a given mock class fails to specify the corresponding real class using the
+ <code>@MockClass(realClass = ...)</code> annotation; or if a mock class defines a mock method for which no
+ corresponding real method or constructor exists in the real class;
+ or if the real method matching a mock method is <code>abstract</code></dd></dl>
+</li>
+</ul>
+<a name="setUpMock(java.lang.Class, java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setUpMock</h4>
+<pre><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+public static&nbsp;void&nbsp;setUpMock(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;realClass,
+                        <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;mock)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Use <a href="../mockit/MockUp.html#MockUp()"><code>MockUp.MockUp()</code></a> or <a href="../mockit/MockUp.html#MockUp(java.lang.Class)"><code>MockUp.MockUp(Class)</code></a> instead.</i></div>
+<div class="block">Similar to <a href="../mockit/Mockit.html#setUpMocks(java.lang.Object...)"><code>setUpMocks(Object...)</code></a>, but accepting a single mock and its corresponding real class.
+ <p/>
+ Useful when the real class is not known in advance, such as when it is determined at runtime through configuration
+ of by creating a <a href="http://download.oracle.com/javase/6/docs/api/java/lang/reflect/Proxy.html?is-external=true" title="class or interface in java.lang.reflect"><code>Proxy</code></a> for an interface.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>realClass</code> - the class to be mocked that is used by code under test</dd><dd><code>mock</code> - an instance of the class containing the mock methods for the real class</dd><dt><span class="strong">See Also:</span></dt><dd><a href="http://code.google.com/p/jmockit/source/browse/trunk/samples/orderMngmntWebapp/test/orderMngr/domain/order/OrderRepository_MockupsAPI_Test.java#113">
+ Example</a></dd></dl>
+</li>
+</ul>
+<a name="setUpMock(java.lang.Class, java.lang.Class)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setUpMock</h4>
+<pre><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+public static&nbsp;void&nbsp;setUpMock(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;realClass,
+                        <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;mockClass)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Use <a href="../mockit/MockUp.html#MockUp()"><code>MockUp.MockUp()</code></a> or <a href="../mockit/MockUp.html#MockUp(java.lang.Class)"><code>MockUp.MockUp(Class)</code></a> instead.</i></div>
+<div class="block">Similar to <a href="../mockit/Mockit.html#setUpMocks(java.lang.Object...)"><code>setUpMocks(Object...)</code></a>, but accepting a single mock class and its corresponding real class.
+ <p/>
+ Can also be useful when the real class is not known in advance, such as when it is determined at runtime through
+ configuration or by creating a <a href="http://download.oracle.com/javase/6/docs/api/java/lang/reflect/Proxy.html?is-external=true" title="class or interface in java.lang.reflect"><code>Proxy</code></a> for an interface.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>realClass</code> - the class to be mocked that is used by code under test</dd><dd><code>mockClass</code> - the class containing the mock methods for the real class</dd><dt><span class="strong">See Also:</span></dt><dd><a href="http://code.google.com/p/jmockit/source/browse/trunk/main/test/mockit/MockAnnotationsTest.java#169">
+ Example</a></dd></dl>
+</li>
+</ul>
+<a name="setUpMock(java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setUpMock</h4>
+<pre><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+public static&nbsp;&lt;T&gt;&nbsp;T&nbsp;setUpMock(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;mockClassOrInstance)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Use <a href="../mockit/MockUp.html#MockUp()"><code>MockUp.MockUp()</code></a> and <a href="../mockit/MockUp.html#getMockInstance()"><code>MockUp.getMockInstance()</code></a> (when mocking an interface) instead.</i></div>
+<div class="block">Sets up the mocks defined in the given mock class.
+ <p/>
+ If the type <a href="../mockit/MockClass.html#realClass()">referred to</a> by the mock class is actually an interface, then a new
+ empty implementation class is created.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>mockClassOrInstance</code> - the mock class itself (given by its <code>Class</code> literal), or an instance of the mock
+ class</dd>
+<dt><span class="strong">Returns:</span></dt><dd>a new instance of the implementation class created for the mocked interface, or <code>null</code> otherwise</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if a given mock class fails to specify the corresponding real class using the
+ <code>@MockClass(realClass = ...)</code> annotation; or if a mock class defines a mock method for which no
+ corresponding real method or constructor exists in the real class;
+ or if the real method matching a mock method is <code>abstract</code></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../mockit/Mockit.html#setUpMock(java.lang.Class, java.lang.Object)"><code>setUpMock(Class, Object)</code></a>, 
+<a href="../mockit/Mockit.html#setUpMocks(java.lang.Object...)"><code>setUpMocks(Object...)</code></a>, 
+<a href="http://code.google.com/p/jmockit/source/browse/trunk/main/test/mockit/MockAnnotationsTest.java#696">
+ Example</a></dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+</ul>
+<div class="aboutLanguage"><em><a href=http://code.google.com/p/jmockit target=_top><img src=resources/logo.png>JMockit Home</a></em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../mockit/Mocked.html" title="annotation in mockit"><span class="strong">Prev Class</span></a></li>
+<li><a href="../mockit/MockUp.html" title="class in mockit"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../index.html?mockit/Mockit.html" target="_top">Frames</a></li>
+<li><a href="Mockit.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small><font size=-1>© 2006-2013 Rogério Liesenfeld</font></small></p>
+</body>
+</html>

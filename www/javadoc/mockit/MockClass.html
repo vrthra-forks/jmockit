@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>MockClass (JMockit Toolkit API)</title>
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="MockClass (JMockit Toolkit API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+</ul>
+<div class="aboutLanguage"><em><a href=http://code.google.com/p/jmockit target=_top><img src=resources/logo.png>JMockit Home</a></em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../mockit/Mock.html" title="annotation in mockit"><span class="strong">Prev Class</span></a></li>
+<li><a href="../mockit/Mocked.html" title="annotation in mockit"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../index.html?mockit/MockClass.html" target="_top">Frames</a></li>
+<li><a href="MockClass.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li><a href="#annotation_type_required_element_summary">Required</a>&nbsp;|&nbsp;</li>
+<li><a href="#annotation_type_optional_element_summary">Optional</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#annotation_type_element_detail">Element</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">mockit</div>
+<h2 title="Annotation Type MockClass" class="title">Annotation Type MockClass</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>This annotation will be removed in a future release.
+ Existing mock classes should extend the <a href="../mockit/MockUp.html" title="class in mockit">MockUp&lt;T></a> base class instead of using the annotation.
+ In cases where the <a href="../mockit/MockClass.html#stubs()"><code>stubs()</code></a> attribute is specified, the methods/constructors to be stubbed out should instead
+ have corresponding <code>@Mock</code> methods with empty bodies.</i></div>
+</div>
+<br>
+<pre><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+<a href="http://download.oracle.com/javase/6/docs/api/java/lang/annotation/Retention.html?is-external=true" title="class or interface in java.lang.annotation">@Retention</a>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/annotation/Retention.html?is-external=true#value()" title="class or interface in java.lang.annotation">value</a>=<a href="http://download.oracle.com/javase/6/docs/api/java/lang/annotation/RetentionPolicy.html?is-external=true#RUNTIME" title="class or interface in java.lang.annotation">RUNTIME</a>)
+<a href="http://download.oracle.com/javase/6/docs/api/java/lang/annotation/Target.html?is-external=true" title="class or interface in java.lang.annotation">@Target</a>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/annotation/Target.html?is-external=true#value()" title="class or interface in java.lang.annotation">value</a>=<a href="http://download.oracle.com/javase/6/docs/api/java/lang/annotation/ElementType.html?is-external=true#TYPE" title="class or interface in java.lang.annotation">TYPE</a>)
+public @interface <span class="strong">MockClass</span></pre>
+<div class="block">Indicates a <em>mock class</em> containing one or more <em>mock methods</em>, whose implementations will take the
+ place of the corresponding method/constructor implementations in the mocked class.
+ Each mock method in the mock class must be explicitly indicated as <a href="../mockit/Mock.html" title="annotation in mockit">such</a>.
+ <p/>
+ <a href="http://jmockit.googlecode.com/svn/trunk/www/tutorial/StateBasedTesting.html#MockClass">In the Tutorial</a></div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../mockit/MockClass.html#realClass()"><code>realClass</code></a>, 
+<a href="../mockit/MockClass.html#stubs()"><code>stubs</code></a>, 
+<a href="../mockit/MockClass.html#inverse()"><code>inverse</code></a></dd></dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== ANNOTATION TYPE REQUIRED MEMBER SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="annotation_type_required_element_summary">
+<!--   -->
+</a>
+<h3>Required Element Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Required Element Summary table, listing required elements, and an explanation">
+<caption><span>Required Elements</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Required Element and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;</code></td>
+<td class="colLast"><code><strong><a href="../mockit/MockClass.html#realClass()">realClass</a></strong></code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;</div>
+<div class="block">The real class whose methods/constructors will be redefined according to the corresponding mock methods in the
+ mock class.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- =========== ANNOTATION TYPE OPTIONAL MEMBER SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="annotation_type_optional_element_summary">
+<!--   -->
+</a>
+<h3>Optional Element Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Optional Element Summary table, listing optional elements, and an explanation">
+<caption><span>Optional Elements</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Optional Element and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../mockit/MockClass.html#inverse()">inverse</a></strong></code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;</div>
+<div class="block">Indicates whether the stubbing filters are to be inverted or not.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]</code></td>
+<td class="colLast"><code><strong><a href="../mockit/MockClass.html#stubs()">stubs</a></strong></code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;</div>
+<div class="block">One or more stubbing filters which specify the set of methods and constructors in the real class that are to be
+ stubbed out with empty implementations.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ ANNOTATION TYPE MEMBER DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="annotation_type_element_detail">
+<!--   -->
+</a>
+<h3>Element Detail</h3>
+<a name="realClass()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>realClass</h4>
+<pre>public abstract&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;realClass</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;</div>
+<div class="block">The real class whose methods/constructors will be redefined according to the corresponding mock methods in the
+ mock class.
+ <p/>
+ Alternatively, the <code>Class</code> object provided can point to an interface.
+ In that case, a proxy implementation class will be created and then used as the target class for mocking.
+ The only way for a test to use such a mocked class will be through the proxy instance returned by
+ <a href="../mockit/Mockit.html#setUpMock(java.lang.Object)"><code>Mockit.setUpMock(Object)</code></a>, so it only makes sense to use an interface for this attribute when the mock
+ class is set up through that method.</div>
+</li>
+</ul>
+<a name="stubs()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>stubs</h4>
+<pre>public abstract&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;stubs</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;</div>
+<div class="block">One or more stubbing filters which specify the set of methods and constructors in the real class that are to be
+ stubbed out with empty implementations.
+ <p/>
+ Each filter must follow the syntax <strong><code>[nameRegex][(paramTypeName...)]</code></strong>, where
+ <code>nameRegex</code> is a <a href="http://download.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html?is-external=true" title="class or interface in java.util.regex">regular expression</a> for matching method names, and
+ <code>paramTypeName</code> is the name of a primitive or reference parameter type.
+ Actually, any <em>suffix</em> of the type name is enough, like "String" instead of the full class name
+ "java.lang.String".
+ If <code>nameRegex</code> is omitted the filter matches only constructors.
+ If <code>(paramTypeName...)</code> is omitted the filter matches methods with any parameters.
+ <p/>
+ Note that an empty filter (<code>stubs = ""</code>) will match <em>no</em> methods or constructors in the real class,
+ or <em>all</em> methods and constructors if used with <code>inverse = true</code>.
+ <p/>
+ To specify the static initializers of the class, inform the filter "&lt;clinit>".</div>
+<dl>
+<dt>Default:</dt>
+<dd>{}</dd>
+</dl>
+</li>
+</ul>
+<a name="inverse()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>inverse</h4>
+<pre>public abstract&nbsp;boolean&nbsp;inverse</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;</div>
+<div class="block">Indicates whether the stubbing filters are to be inverted or not.
+ If inverted, only the methods and constructors matching them are <strong>not</strong> stubbed out.</div>
+<dl>
+<dt>Default:</dt>
+<dd>false</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+</ul>
+<div class="aboutLanguage"><em><a href=http://code.google.com/p/jmockit target=_top><img src=resources/logo.png>JMockit Home</a></em></div>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../mockit/Mock.html" title="annotation in mockit"><span class="strong">Prev Class</span></a></li>
+<li><a href="../mockit/Mocked.html" title="annotation in mockit"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../index.html?mockit/MockClass.html" target="_top">Frames</a></li>
+<li><a href="MockClass.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li><a href="#annotation_type_required_element_summary">Required</a>&nbsp;|&nbsp;</li>
+<li><a href="#annotation_type_optional_element_summary">Optional</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#annotation_type_element_detail">Element</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small><font size=-1>© 2006-2013 Rogério Liesenfeld</font></small></p>
+</body>
+</html>

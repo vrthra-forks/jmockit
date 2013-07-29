@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright (c) 2006-2013 Rogério Liesenfeld
+  ~ This file is subject to the terms of the MIT license (see LICENSE.txt).
+  -->
+<html>
+<head>
+   <title>The JMockit Testing Toolkit Tutorial</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <link rel="stylesheet" type="text/css" href="../prettify.css"/>
+   <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+   <script type="text/javascript" src="../highlight.pack.js"></script>
+   <script type="text/javascript">hljs.initHighlightingOnLoad()</script>
+</head>
+<body>
+<h2>
+   Using mocks and stubs over entire test classes and suites
+   <div class="navigation">
+      <a href="../tutorial.html"><img align="right" src="go-home.png" title="Contents"></a>
+      <a href="CodeCoverage.html"><img align="right" src="go-next.png" title="Next chapter"></a>
+      <a href="ReflectionUtilities.html"><img align="right" src="go-previous.png" title="Previous chapter"></a>
+   </div>
+</h2>
+
+<p>
+   As we have seen, the <a href="StateBasedTesting.html">JMockit Mockups API</a> provides methods that can be used to
+   apply <em>mock classes</em> and to <em>stub out</em> classes.
+   There are times when we want to mock or stub out classes for the entire scope of a test class (that is, for all of
+   its test methods), or even for the entire scope of a test suite (that is, for all of its test classes).
+   In test code, the <code class="type">mockit.UsingMocksAndStubs</code> annotation provides an easy way to do just
+   that, by letting us specify which mock classes to apply and/or which real classes to stub out for a given test class
+   or <em>test suite</em> class (when using JUnit 4).
+   It is also possible to specify mock classes and/or classes to be stubbed out for an entire test run through external
+   configuration, by defining certain system properties via JVM configuration or in a <code>jmockit.properties</code>
+   file.
+</p>
+<div style="text-align: center;">
+   <map name="figure1">
+      <area shape="rect" coords="1,1,202,34" href="../javadoc/mockit/UsingMocksAndStubs.html">
+   </map>
+   <img src="UsingMocksAndStubs.png" usemap="#figure1">
+</div>
+
+<h3 id="annotation">
+   Programmatic configuration with <code>@UsingMocksAndStubs</code>
+   <div class="navigation">
+      <a href="../tutorial.html"><img align="right" src="go-home.png" title="Contents"></a>
+      <img align="right" src="blank.gif" width="22">
+      <a href="#propertiesFile"><img align="right" src="go-bottom.png" title="Last section"></a>
+      <img align="right" src="blank.gif" width="22">
+      <a href="#systemProperty"><img align="right" src="go-down.png" title="Next section"></a>
+   </div>
+</h3>
+<p>
+   The <code class="annotation">@UsingMocksAndStubs</code> annotation is applied to a test class with a list
+   containing one or more <code class="type">MockUp&lt;T></code> subclasses and/or production classes.
+   When any test in this annotated test class is executed, those mocks and stubs will be in effect.
+</p>
+<p>
+   This ability is particularly useful to prevent code under test from executing some other code which is not relevant
+   for the test but could interfere with it, take too long to execute, or generate some undesirable output.
+   The following example causes two dependency classes to be fully stubbed out, including any static initialization
+   blocks they may have.
+</p>
+<pre><code>public class UnitUnderTest
+{
+   private final Dependency dep1 = new Dependency(...);
+
+   public void doSomething()
+   {
+      ...
+      AnotherDependency.staticMethod();
+      ...
+   }
+}
+
+@UsingMocksAndStubs({Dependency.class, AnotherDependency.class})
+public final class UnitTest
+{
+   @Test
+   public void someTestMethod()
+   {
+      new UnitUnderTest().doSomething();
+   }
+}
+</code></pre>
+<p>
+   For a JUnit 4 test suite, we can apply a given mock class (and/or stub out production classes) by annotating the test
+   suite class, as the next example shows.
+</p>
+<pre><code>@RunWith(Suite.class)
+@Suite.SuiteClasses({MyFirstTest.class, MySecondTest.class})
+@UsingMocksAndStubs({JDKLoggingMocks.class, Log4jMocks.class})
+public final class TestSuite
+{}
+</code></pre>
+<p>
+   In this example, we apply the <code class="type">JDKLoggingMocks</code> and <code class="type">Log4jMocks</code> mock
+   classes, both available in the <code>mockit.integration.logging</code> package.
+   With this, any use of the standard <code>java.util.logging</code> API in any test belonging to the specified test
+   suite will be mocked/stubbed out so that no actual logging output is produced.
+   Any calls in production code like <code>Logger.getLogger(ProductionClass.class.getName())</code> will result in a
+   mock logger object. The same will happen to uses of the Log4J API.
+</p>
+<p>
+   The implementation of the <code class="type">mockit.integration.logging.Log4jMocks</code> class makes for some
+   interesting and complex use of the state-based mocking/stubbing API, so we reproduce it here for reference (minus the
+   Javadoc documentation).
+</p>
+<pre><code>import org.apache.log4j.*;
+import org.apache.log4j.spi.*;
+import mockit.*;
+
+public final class Log4jMocks extends MockUp&lt;Logger>
+{
+   private static final Logger MOCK_LOGGER = new RootLogger(Level.OFF);
+
+   Log4jMocks() { new Hierarchy(MOCK_LOGGER).setThreshold(Level.OFF); }
+
+   @Mock public static Logger getLogger(String name) { return MOCK_LOGGER; }
+   @Mock public static Logger getLogger(Class&lt;?> clazz) { return MOCK_LOGGER; }
+   @Mock public static Logger getRootLogger() { return MOCK_LOGGER; }
+   @Mock public static Logger getLogger(String name, LoggerFactory lf) { return MOCK_LOGGER; }
+
+   @Mock public static void trace(Object message) {}
+   @Mock public static void trace(Object message, Throwable t) {}
+   @Mock public static boolean isTraceEnabled() { return false; }
+}
+</code></pre>
+<p>
+   The Log4J API provides several static methods to create loggers, so we have a corresponding mock method for each one
+   of them, which simply returns a global mock instance.
+   The default constructor of the mock class is called exactly once by JMockit, when the
+   <code class="annotation">@UsingMocksAndStubs</code> annotation is applied to the test suite.
+   We use it here to configure the unmocked parts of the logging system so that it never actually produces any output.
+</p>
+
+<h3 id="systemProperty">
+   External configuration through system properties
+   <div class="navigation">
+      <a href="../tutorial.html"><img align="right" src="go-home.png" title="Contents"></a>
+      <img align="right" src="blank.gif" width="22">
+      <img align="right" src="blank.gif" width="22">
+      <a href="#annotation"><img align="right" src="go-up.png" title="Previous section"></a>
+      <a href="#propertiesFile"><img align="right" src="go-down.png" title="Next section"></a>
+   </div>
+</h3>
+<p>
+   Two special system properties are considered at startup time: <strong><code>jmockit-mocks</code></strong> and
+   <strong><code>jmockit-stubs</code></strong>.
+</p>
+<p>
+   The first one may contain a comma-separated list of fully qualified class names.
+   Any such class will be automatically set up as a <em>mock class</em>, provided it extends the
+   <code class="type">MockUp&ltT></code> base class.
+   The mocks defined in startup mock classes will remain in effect until the end of the test run, for all test classes.
+</p>
+<p>
+   The <code>jmockit-stubs</code> property, similarly, may also contain a comma-separated list of fully qualified class
+   names.
+   These are, however, arbitrary classes to be fully <em>stubbed out</em> for the duration of the test run.
+   If only some methods or constructors need to be stubbed out, they can be specified by appending one or more filters
+   after the class name, separated from it by a "<code>#</code>" character.
+   Multiple filters for the same class must be separated by a "<code>|</code>" character.
+   For methods, the filter should be a regular expression for method names, optionally followed by a comma-separated
+   list of parameter types between parentheses; for constructors, a filter should only contain the parameter types.
+</p>
+<p>
+   Note that system properties can be passed to the JVM through the standard "<code>-D</code>" command line parameter.
+   Ant/Maven/etc. build scripts have their own ways of specifying system properties, so check their documentation for
+   details.
+</p>
+
+<h3 id="propertiesFile">
+   External configuration with the <code>jmockit.properties</code> file
+   <div class="navigation">
+      <a href="../tutorial.html"><img align="right" src="go-home.png" title="Contents"></a>
+      <a href="#annotation"><img align="right" src="go-top.png" title="First section"></a>
+      <img align="right" src="blank.gif" width="22">
+      <a href="#systemProperty"><img align="right" src="go-up.png" title="Previous section"></a>
+      <img align="right" src="blank.gif" width="22">
+   </div>
+</h3>
+<p>
+   The system properties described above can also be specified in a separate
+   <strong><code>jmockit.properties</code></strong> file, which should be present at the root of the classpath.
+   If there are multiple such files in the classpath (either inside jars or plain directories), the values specified
+   for the same system property are added together.
+   This allows the creation of reusable mock classes which can be packaged in a jar file with its own properties file;
+   when added to the execution classpath of a test suite, the mock classes will be automatically applied at startup.
+</p>
+<p>
+   For convenience, JMockit system properties can be specified in the properties file without the
+   "<code>jmockit-</code>" prefix.
+</p>
+
+<div class="navigation">
+   <a href="../tutorial.html"><img align="right" src="go-home.png" title="Contents"></a>
+   <a href="CodeCoverage.html"><img align="right" src="go-next.png" title="Next chapter"></a>
+   <a href="ReflectionUtilities.html"><img align="right" src="go-previous.png" title="Previous chapter"></a>
+</div>
+<br/>
+</body>
+</html>
